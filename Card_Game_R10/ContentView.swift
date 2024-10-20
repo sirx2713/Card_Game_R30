@@ -27,7 +27,7 @@ struct ContentView: View {
                 }
                 Spacer()
                 Button {
-                    
+                    deal()
                 } label: {
                     Image("button")
                 }
@@ -63,6 +63,32 @@ struct ContentView: View {
                 
             }
         }
+    }
+    
+    func deal(){
+        
+        //Randomise the player cards
+        let playerCardValue = Int.random(in: 2...14)
+        playerImage = "card" + String(playerCardValue)
+        
+        //Randomise the cpu cards
+        let cpuCardValue = Int.random(in: 2...14)
+        cpuImage = "card" + String(cpuCardValue)
+        
+        //Increase the player score
+        if playerCardValue > cpuCardValue{
+            playerScore += 5
+        }
+        
+        else if cpuCardValue > playerCardValue{
+            cpuScore += 5
+        }
+        
+        else if playerCardValue == cpuCardValue{
+            playerScore += 1
+            cpuScore += 1
+        }
+        
     }
 }
 
